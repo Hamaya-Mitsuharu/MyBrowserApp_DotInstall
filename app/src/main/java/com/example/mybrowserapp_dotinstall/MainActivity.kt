@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
     // Itemがタップされた時に呼ばれる
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.getItemId()
+        
         when (id) {
             R.id.action_reload  -> {
                 myWebView?.reload()
