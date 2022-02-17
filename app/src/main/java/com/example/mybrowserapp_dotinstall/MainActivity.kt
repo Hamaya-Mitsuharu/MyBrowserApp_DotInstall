@@ -86,14 +86,19 @@ class MainActivity : AppCompatActivity() {
     // Itemがタップされた時に呼ばれる
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.getItemId()
-        if (id.equals(R.id.action_reload)){
-            return true;
-        }
-        else if (id.equals(R.id.action_forward)){
-            return true;
-        }
-        else if (id.equals(R.id.action_back)){
-            return true;
+        when (id) {
+            R.id.action_reload  -> {
+                myWebView?.reload()
+                return true
+            }
+            R.id.action_forward -> {
+                myWebView?.goForward()
+                return true
+            }
+            R.id.action_back    -> {
+                myWebView?.goBack()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
