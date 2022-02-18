@@ -83,10 +83,18 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val forwardItem = menu?.findItem(R.id.action_forward)
+        val backItem = menu?.findItem(R.id.action_back)
+        myWebView?.canGoForward()?.let { forwardItem?.setEnabled(it) }
+        myWebView?.canGoBack()?.let { backItem?.setEnabled(it) }
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     // Itemがタップされた時に呼ばれる
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.getItemId()
-        
+
         when (id) {
             R.id.action_reload  -> {
                 myWebView?.reload()
